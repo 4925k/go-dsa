@@ -22,4 +22,4 @@ In browsers - The back button in a browser saves all the URLs you have visited p
 Each time you visit a new page, it is added on top of the stack.
 When you press the back button, the current URL is removed from the stack, and the previous URL is accessed.
 */
-package Stack
+package stack
