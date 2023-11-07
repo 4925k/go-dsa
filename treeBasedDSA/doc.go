@@ -25,5 +25,7 @@ The degree of a node is the total number of branches of that node.
 
 Forest
 A collection of disjoint trees is called a forest.
+
+Traversing a tree means visiting every node in the tree
 */
 package treebaseddsa
