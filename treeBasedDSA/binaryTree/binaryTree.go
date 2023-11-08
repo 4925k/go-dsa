@@ -34,6 +34,30 @@ func (n *Node) DepthFirstTraversal() []int {
 
 }
 
+func (n *Node) BreadthFirstValue() []int {
+	if n == nil {
+		return nil
+	}
+
+	s := []*Node{n} // act as a queue
+	res := []int{}  // store values
+	for len(s) > 0 {
+
+		currentNode := s[0]
+		res = append(res, currentNode.data)
+		s = s[1:]
+
+		if currentNode.left != nil {
+			s = append(s, currentNode.left)
+		}
+
+		if currentNode.right != nil {
+			s = append(s, currentNode.right)
+		}
+	}
+
+}
+
 func BtTest() {
 	a := NewNode(1)
 	b := NewNode(5)
@@ -48,5 +72,5 @@ func BtTest() {
 	b.right = e
 	c.right = f
 
-	fmt.Println(a.DepthFirstTraversal())
+	fmt.Println(a.BreadthFirstValue())
 }
