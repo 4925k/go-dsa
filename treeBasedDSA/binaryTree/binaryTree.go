@@ -34,7 +34,7 @@ func (n *Node) DepthFirstTraversal() []int {
 
 }
 
-func (n *Node) BreadthFirstValue() []int {
+func (n *Node) BreadthFirstTraversal() []int {
 	if n == nil {
 		return nil
 	}
@@ -56,6 +56,51 @@ func (n *Node) BreadthFirstValue() []int {
 		}
 	}
 
+	return res
+}
+
+func (n *Node) DepthFirstSearch(target int) bool {
+	if n == nil {
+		return false
+	}
+
+	if n.data == target {
+		return true
+	}
+
+	if n.left.DepthFirstSearch(target) || n.right.DepthFirstSearch(target) {
+		return true
+	}
+
+	return false
+}
+
+func (n *Node) BreadthFirstSearch(target int) bool {
+	if n == nil {
+		return false
+	}
+
+	s := []*Node{n} // act as a queue for BFT
+
+	for len(s) > 0 {
+		currentNode := s[0]
+		s = s[1:]
+
+		if currentNode.data == target {
+			return true
+		}
+
+		if currentNode.left != nil {
+			s = append(s, currentNode.left)
+		}
+
+		if currentNode.right != nil {
+			s = append(s, currentNode.right)
+		}
+
+	}
+
+	return false
 }
 
 func BtTest() {
@@ -72,5 +117,6 @@ func BtTest() {
 	b.right = e
 	c.right = f
 
-	fmt.Println(a.BreadthFirstValue())
+	fmt.Println(a.BreadthFirstSearch(12))
+	fmt.Println(a.BreadthFirstSearch(111))
 }
