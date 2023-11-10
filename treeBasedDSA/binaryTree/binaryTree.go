@@ -103,13 +103,47 @@ func (n *Node) BreadthFirstSearch(target int) bool {
 	return false
 }
 
+func (n *Node) SumDepthFirst() int {
+	if n == nil {
+		return 0
+	}
+
+	return n.data + n.left.SumDepthFirst() + n.right.SumDepthFirst()
+}
+
+func (n *Node) SumBreadthFirst() int {
+	if n == nil {
+		return 0
+	}
+
+	var sum int
+	queue := []*Node{n}
+
+	for len(queue) > 0 {
+		currentNode := queue[0]
+		sum += currentNode.data
+		queue = queue[1:]
+
+		if currentNode.left != nil {
+			queue = append(queue, currentNode.left)
+		}
+
+		if currentNode.right != nil {
+			queue = append(queue, currentNode.right)
+		}
+	}
+
+	return sum
+
+}
+
 func BtTest() {
 	a := NewNode(1)
-	b := NewNode(5)
-	c := NewNode(12)
-	d := NewNode(13)
-	e := NewNode(14)
-	f := NewNode(15)
+	b := NewNode(2)
+	c := NewNode(3)
+	d := NewNode(4)
+	e := NewNode(5)
+	f := NewNode(6)
 
 	a.left = b
 	a.right = c
@@ -117,6 +151,13 @@ func BtTest() {
 	b.right = e
 	c.right = f
 
-	fmt.Println(a.BreadthFirstSearch(12))
-	fmt.Println(a.BreadthFirstSearch(111))
+	fmt.Println("Depth First Travesal\t", a.DepthFirstTraversal())
+	fmt.Println("Breadth First Travesal\t", a.BreadthFirstTraversal())
+
+	fmt.Println("Depth First Search\t", a.DepthFirstSearch(12))
+	fmt.Println("Breadth First Search\t", a.BreadthFirstSearch(111))
+
+	fmt.Println("Depth First Sum\t\t", a.SumDepthFirst())
+	fmt.Println("Breadth First Sum\t", a.SumBreadthFirst())
+
 }
