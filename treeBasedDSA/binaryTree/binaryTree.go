@@ -151,6 +151,7 @@ func BtTest() {
 	b.right = e
 	c.right = f
 
+	// test functions
 	fmt.Println("Depth First Travesal\t", a.DepthFirstTraversal())
 	fmt.Println("Breadth First Travesal\t", a.BreadthFirstTraversal())
 
