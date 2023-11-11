@@ -1,6 +1,9 @@
 package binarytree
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 type Node struct {
 	data  int
@@ -134,7 +137,39 @@ func (n *Node) SumBreadthFirst() int {
 	}
 
 	return sum
+}
 
+// assumed node is not nil
+func (n *Node) DepthFirstMin() int {
+	if n == nil {
+		return math.MaxInt
+	}
+
+	return min(n.data, n.left.DepthFirstMin(), n.right.DepthFirstMin())
+}
+
+// assumed node is not nil
+func (n *Node) BreadthFirstMin() int {
+	queue := []*Node{n}
+	min := math.MaxInt
+
+	for len(queue) > 0 {
+		currentNode := queue[0]
+		if currentNode.data < min {
+			min = currentNode.data
+		}
+		queue = queue[1:]
+
+		if currentNode.left != nil {
+			queue = append(queue, currentNode.left)
+		}
+
+		if currentNode.right != nil {
+			queue = append(queue, currentNode.right)
+		}
+	}
+
+	return min
 }
 
 func BtTest() {
@@ -160,5 +195,8 @@ func BtTest() {
 
 	fmt.Println("Depth First Sum\t\t", a.SumDepthFirst())
 	fmt.Println("Breadth First Sum\t", a.SumBreadthFirst())
+
+	fmt.Println("DepthFirstMin\t\t", a.DepthFirstMin())
+	fmt.Println("BreadthFirstMin\t\t", a.BreadthFirstMin())
 
 }
