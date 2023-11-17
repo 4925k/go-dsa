@@ -1,0 +1,14 @@
+Static Arrays
+To recall, arrays are a way of storing data contiguously. In strictly typed languages like Java, C++, C# etc, arrays have an allocated size when initialized. This means that the size of the array cannot change after its initialization.
+
+These are known as static arrays. Loosely typed languages such as Python and JavaScript do not have static arrays, which we will discuss in the next chapter.
+
+Arrays are a very popular topic in coding interviews since they are one of the most fundamental data structures. In fact, there are many data structures and algorithms which use an array in their underlying implementation - we will discuss these later in the course. As such, it is essential to know the basic operations that can be performed on an array. The most common operations are:
+
+Reading
+Deletion
+Insertion
+
+Dynamic Arrays are much more common and useful because of their ability to be resized. In JavaScript and Python, these are the default — they are not strictly typed languages.
+
+The difference between static and dynamic arrays is that we don’t have to specify a size upon initialization.
