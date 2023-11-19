@@ -3,4 +3,8 @@ A linked list is another data structure that is like an array in the sense that 
 The first difference is that linked lists are made up of objects called ListNode's. This object contains two attributes:
 
 value - This stores the value of the node, the value can be anything - a character, an integer, etc.
-next - This stores the reference to the next node in the linked list. The picture below visualizes the ListNode object. This will make more sense a little later on
+next - This stores the reference to the next node in the linked list. 
+
+the Doubly Linked List. As the name implies, it's called doubly because each node now has two pointers. 
+We have a prev pointer which points to the previous node, in addition to the next pointer. 
+If the prev pointer points to null, it is an indication that we are at the start of the linked list.git s

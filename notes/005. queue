@@ -1,0 +1,11 @@
+Queues are similar to stacks, except they follow what is called a FIFO approach (First in First Out). 
+A real world example would be a line at the bank. The first person to come in the line is the first person to be served. 
+An example from the software world would be print jobs. 
+For example, if multiple people are trying to print documents, it will be handled on a first come first serve basis.
+
+
+The most common implementation of a queue is using a Linked List.
+The two operations that queues support are enqueue and dequeue.
+
+A queue is just an abstract interface, similar to a stack and can be implemented by multiple data structures, 
+provided that they fulfill the contract of implementing enqueue and dequeue operations.
