@@ -26,6 +26,12 @@ func PacificAtlantic(heights [][]int) [][]int {
 					return true
 				}
 
+				// if at border return true
+				if r <= 0 || c <= 0 || r >= len(heights)-1 || c >= len(heights[r])-2 {
+					return true
+				}
+
+				canFlow[r][c] = (dfs(r-1, c) || dfs(r, c-1)) && (dfs(r, c+1) || dfs(r+1, c))
 				return true
 			}
 
